@@ -5,6 +5,7 @@ __pycache__/
 *.log
 *.txt
 !requirements.txt
+!logs/*.txt
 !.gitkeep
 venv/
 .venv/

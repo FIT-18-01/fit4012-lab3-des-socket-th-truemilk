@@ -1,0 +1,20 @@
+Thời điểm: 2026-05-02 14:45
+Thành viên: Mạc Đức Thắng
+Tình huống: Demo happy path giải thích Receiver và luồng giải mã
+Môi trường: máy cục bộ, TCP localhost:6001
+
+Lệnh Receiver:
+python receiver.py
+
+Lệnh Sender:
+SERVER_IP=127.0.0.1 SERVER_PORT=6001 MESSAGE="Test thong diep" python sender.py
+
+Kết quả quan sát từ Receiver:
+- Kết nối từ 127.0.0.1
+- Packet được phân tích: key, IV, header độ dài, ciphertext
+- Giải mã bản rõ: "Test thong diep"
+- Không có lỗi phát sinh
+
+Ghi chú:
+- Receiver xử lý header độ dài và giải mã bằng DES-CBC + PKCS#7.
+- Log xác nhận cấu trúc packet đúng và bản tin nhận được chính xác.

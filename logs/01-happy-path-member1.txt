@@ -1,0 +1,24 @@
+Thời điểm: 2026-05-02 14:30
+Thành viên: Nguyễn Việt Hoàng
+Tình huống: Demo happy path Sender -> Receiver
+Môi trường: máy cục bộ, TCP localhost:6001
+
+Lệnh Sender:
+RECEIVER_PORT=6001 python sender.py
+
+Thông tin đầu vào Sender:
+MESSAGE="Xin chao FIT4012"
+
+Kết quả quan sát từ Sender:
+- Xây dựng packet gồm key, IV, header độ dài, ciphertext
+- Gửi thành công payload ciphertext
+- In ra key và IV 8 byte
+
+Kết quả quan sát từ Receiver:
+- Receiver đang lắng nghe cổng 6001
+- Nhận đủ 8 byte key, 8 byte IV, 4 byte header, ciphertext
+- Giải mã thông điệp thành công
+- Bản rõ: "Xin chao FIT4012"
+
+Kết luận:
+Demo hoàn thành, Receiver giải mã đúng và hiển thị bản tin gốc.

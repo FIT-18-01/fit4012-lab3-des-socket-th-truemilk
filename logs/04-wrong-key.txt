@@ -1,0 +1,17 @@
+Thời điểm: 2026-05-02 15:15
+Thành viên: Mạc Đức Thắng
+Tình huống: Test tiêu cực với khóa sai khi giải mã
+Môi trường: máy cục bộ, TCP localhost:6001
+
+Thiết lập test:
+- Sender tạo packet hợp lệ với key và IV
+- Receiver giải mã với key sai (giả lập bằng cách sửa một số byte key)
+
+Kết quả quan sát từ Receiver:
+- Nhận packet bình thường
+- Giải mã không cho bản rõ hợp lệ hoặc kiểm tra padding thất bại
+- Xuất ra lỗi giải mã hoặc bản tin không đúng
+
+Kết quả:
+- Khóa sai khiến không thể phục hồi được bản tin gốc.
+- Làm rõ tại sao truyền key plaintext trong packet lại không an toàn.

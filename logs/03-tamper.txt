@@ -1,0 +1,21 @@
+Thời điểm: 2026-05-02 15:00
+Thành viên: Nguyễn Việt Hoàng
+Tình huống: Test tiêu cực với ciphertext bị giả mạo
+Môi trường: máy cục bộ, TCP localhost:6001
+
+Thiết lập test:
+- Tạo packet bình thường từ Sender
+- Thay đổi một byte trong ciphertext trước khi gửi cho Receiver
+
+Kết quả quan sát từ Receiver:
+- Kết nối từ 127.0.0.1
+- Phân tích packet và đọc độ dài ciphertext
+- Thử giải mã DES-CBC
+- Sai kiểm tra padding hoặc trả về bản rõ không hợp lệ
+
+Kết quả:
+- Receiver không xuất ra thông điệp gốc hợp lệ.
+- Việc giả mạo được phát hiện gián tiếp qua lỗi giải mã.
+
+Kết luận:
+Tính toàn vẹn packet không được bảo vệ trong thiết kế lab này, nên giả mạo gây ra lỗi giải mã và cần MAC/xác thực trong hệ thống thực tế.

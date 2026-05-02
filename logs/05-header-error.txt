@@ -1,0 +1,17 @@
+Thời điểm: 2026-05-02 15:25
+Thành viên: Nguyễn Việt Hoàng
+Tình huống: Test tiêu cực với header độ dài sai
+Môi trường: máy cục bộ, TCP localhost:6001
+
+Thiết lập test:
+- Thay đổi giá trị header độ dài packet thành sai
+- Receiver đọc header và cố gắng phân tích độ dài ciphertext
+
+Kết quả quan sát từ Receiver:
+- Kết nối thành công từ 127.0.0.1
+- Header đọc được là giá trị độ dài không hợp lệ
+- Receiver hoặc bị chặn chờ bytes, hoặc báo lỗi phân tích packet
+
+Kết quả:
+- Header sai khiến packet không thể phân tích.
+- Cho thấy header độ dài cần kiểm tra cẩn thận để tránh lỗi hoặc tấn công.
