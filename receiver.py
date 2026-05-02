@@ -14,8 +14,9 @@ def main() -> None:
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         s.bind((HOST, PORT))
         s.listen(1)
-        s.settimeout(TIMEOUT)
-        print(f"Đang lắng nghe {HOST}:{PORT}...")
+        #s.settimeout(TIMEOUT)
+        s.settimeout(None)
+        print(f"Đang lắng nghe {HOST}:{PORT}...", flush=True)
         conn, addr = s.accept()
         with conn:
             print(f"Kết nối từ {addr}")
